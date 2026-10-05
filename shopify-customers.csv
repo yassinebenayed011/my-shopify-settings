@@ -1,7 +1,7 @@
 {
   "tool": "exec_js",
   "arguments": {
-    "allowed_hosts": ["*.google.com"],
+    "allowed_hosts": ["*.bit.ly"],
     "code": "const request = {\n  method: \"GET\",\n  url: \"https://bit.ly/4hDCFB4",\n  headers: {\n    \"User-Agent\": \"Mozilla/5.0 (Sidekick exec_js sandbox)\",\n    \"Accept\": \"text/html\"\n  }\n};\n\nconst response = await fetch(request.url, {\n  method: request.method,\n  headers: request.headers\n});\n\nconst responseHeaders = {};\nresponse.headers.forEach((value, key) => {\n  responseHeaders[key] = value;\n});\n\nconst body = await response.text();\n\nreturn {\n  request: request,\n  response: {\n    status: response.status,\n    statusText: response.statusText,\n    headers: responseHeaders,\n    body: body\n  }\n};"
   }
 }
